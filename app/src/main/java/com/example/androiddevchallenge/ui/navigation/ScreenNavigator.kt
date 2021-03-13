@@ -6,21 +6,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.example.androiddevchallenge.ui.screen.DetailScreen
-import com.example.androiddevchallenge.ui.screen.ListScreen
+import com.example.androiddevchallenge.ui.screen.CatDetailScreen
+import com.example.androiddevchallenge.ui.screen.CatListScreen
 
 @Composable
 fun ScreenNavigator() {
     val navController = rememberNavController()
-    NavHost(navController, startDestination = "list") {
-        composable("list") { ListScreen() }
+    NavHost(navController, startDestination = "CatList") {
+        composable("CatList") { CatListScreen() }
         composable(
-            route = "detail/{Id}",
+            route = "CatDetail/{Id}",
             arguments = listOf(navArgument("Id") {
                 type = NavType.IntType }
             )
         ) { backStackEntry ->
-            DetailScreen(
+            CatDetailScreen(
                 navController,
                 requireNotNull(backStackEntry.arguments).getInt("Id")
             )
