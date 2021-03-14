@@ -13,10 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 
 @Composable
-fun CatHeaderItem(
-    title: String
-) {
-    CatHeader(title = title)
+fun CatHeaderItem() {
+    CatHeader()
     Divider(
         color = Color.LightGray,
         modifier = Modifier
@@ -26,9 +24,7 @@ fun CatHeaderItem(
 }
 
 @Composable
-private fun CatHeader(
-    title: String
-) {
+private fun CatHeader() {
     Surface (
         modifier = Modifier
             .fillMaxWidth()
@@ -40,7 +36,7 @@ private fun CatHeader(
                 )
         ) {
             Text(
-                text = title,
+                text = "Cats List",
                 style = TextStyle(
                     fontWeight = MaterialTheme.typography.h5.fontWeight,
                     fontSize = MaterialTheme.typography.h5.fontSize
@@ -64,7 +60,5 @@ private fun CatHeader(
 @Preview("CatHeaderItem Component")
 @Composable
 fun CatHeaderItemPreview() {
-    CatHeaderItem(
-        title = "Cats List"
-    )
+    CatHeaderItem()
 }

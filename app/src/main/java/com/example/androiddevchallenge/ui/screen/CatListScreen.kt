@@ -1,24 +1,34 @@
 package com.example.androiddevchallenge.ui.screen
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.entity.CatEntity
 import com.example.androiddevchallenge.factory.CatFactory
 import com.example.androiddevchallenge.ui.components.CatHeaderItem
 import com.example.androiddevchallenge.ui.components.CatListItem
 import com.example.androiddevchallenge.ui.components.CommonAppBar
+import com.example.androiddevchallenge.ui.navigation.Destinations
 
 @Composable
-fun CatListScreen() {
+fun CatListScreen(
+    navController: NavController
+) {
     Scaffold(
         topBar = {
-            CommonAppBar(title = "ペット養子縁組App")
+            CommonAppBar(
+                title = "ペット養子縁組App",
+                navController = navController,
+                shouldRoot = true
+            )
         },
     ) {
         Surface(
@@ -27,6 +37,7 @@ fun CatListScreen() {
         ) {
             CatList(
                 catLists = CatFactory.getCatList(),
+                navController = navController
             )
         }
     }
@@ -34,20 +45,26 @@ fun CatListScreen() {
 
 @Composable
 private fun CatList(
-    catLists: List<CatEntity>
+    catLists: List<CatEntity>,
+    navController: NavController
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxHeight()
     ) {
-        items(count = catLists.size + 1, itemContent = { index ->
-            if (index == 0) {
-                CatHeaderItem(
-                    title = "Cats List"
-                )
+        items(count = catLists.size + 1, itemContent = { itemIndex ->
+            if (itemIndex == 0) {
+                CatHeaderItem()
             } else {
+                val listIndex = itemIndex - 1
+                val catEntity = catLists[listIndex]
                 CatListItem(
-                    catEntity = catLists[index - 1],
-                    onClickItem = {}
+                    catEntity = catEntity,
+                    onClickItem = {
+                        val detailRoute = Destinations.CatDetail.toString() + "/${catEntity.id}"
+                        navController.navigate(
+                            route = detailRoute
+                        )
+                    }
                 )
             }
         })
@@ -57,5 +74,7 @@ private fun CatList(
 @Preview("List Screen", widthDp = 360, heightDp = 640)
 @Composable
 fun CatListListScreenPreview() {
-    CatListScreen()
+    CatListScreen(
+        navController = NavController(LocalContext.current),
+    )
 }

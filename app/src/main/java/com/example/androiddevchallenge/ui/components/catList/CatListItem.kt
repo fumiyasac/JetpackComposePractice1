@@ -134,7 +134,7 @@ private fun CatInformation(
                     .padding(top = 4.dp)
             )
             Text(
-                text = "No." + number,
+                text = "No.${number}",
                 style = TextStyle(
                     fontWeight = MaterialTheme.typography.caption.fontWeight,
                     fontSize = MaterialTheme.typography.caption.fontSize
