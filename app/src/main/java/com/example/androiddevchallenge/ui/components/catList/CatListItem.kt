@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.material.Divider
@@ -46,7 +47,6 @@ fun CatListItem(
                 gender = catEntity.gender,
                 number = catEntity.id.toString()
             )
-
         }
     }
     Divider(
@@ -68,11 +68,18 @@ private fun CatImage(
             .clip(MaterialTheme.shapes.medium)
             .aspectRatio(3F / 2F),
     ) {
-        Image(
-            painter = painterResource(imageAsset),
-            contentDescription = contentDescription,
-            contentScale = ContentScale.Crop
-        )
+        Box {
+            Image(
+                painter = painterResource(imageAsset),
+                contentDescription = contentDescription,
+                contentScale = ContentScale.Crop
+            )
+            Box(
+                modifier = Modifier
+                    .background(Color.Black.copy(alpha = 0.24f))
+                    .aspectRatio(3F / 2F),
+            )
+        }
     }
 }
 

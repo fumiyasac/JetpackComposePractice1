@@ -36,7 +36,7 @@ private fun CatHeader() {
                 )
         ) {
             Text(
-                text = "Cats List",
+                text = "🐈 Cats List",
                 style = TextStyle(
                     fontWeight = MaterialTheme.typography.h5.fontWeight,
                     fontSize = MaterialTheme.typography.h5.fontSize
@@ -47,7 +47,7 @@ private fun CatHeader() {
                     .padding(top = 8.dp)
             )
             Text(
-                text = "現在募集中の猫ちゃん達の一覧です🐈",
+                text = "現在募集中の猫ちゃん達の一覧です🌟",
                 style = TextStyle(
                     fontWeight = MaterialTheme.typography.body2.fontWeight,
                     fontSize = MaterialTheme.typography.body2.fontSize
