@@ -1,16 +1,24 @@
 package com.example.androiddevchallenge.ui.screen
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.androiddevchallenge.factory.CatFactory
-import com.example.androiddevchallenge.ui.components.*
+import com.example.androiddevchallenge.ui.components.CommonAppBar
+import com.example.androiddevchallenge.ui.components.CatImageAndName
+import com.example.androiddevchallenge.ui.components.CatDetailTitle
+import com.example.androiddevchallenge.ui.components.CatFundamentalInfo
+import com.example.androiddevchallenge.ui.components.CatIntroduction
+import com.example.androiddevchallenge.ui.components.CatTestimonial
 
 @Composable
 fun CatDetailScreen(
