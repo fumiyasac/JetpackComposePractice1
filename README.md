@@ -1,6 +1,6 @@
 # Put title of your app here
 
-![Workflow result](https://github.com/<OWNER>/<REPOSITORY>/workflows/Check/badge.svg)
+![Workflow result](https://github.com/fumiyasac/JetpackComposePractice1/workflows/Check/badge.svg)
 
 ## :scroll: Description
 
