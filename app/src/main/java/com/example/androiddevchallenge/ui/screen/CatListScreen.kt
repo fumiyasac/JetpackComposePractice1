@@ -15,15 +15,15 @@
  */
 package com.example.androiddevchallenge.ui.screen
 
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.entity.CatEntity
@@ -66,23 +66,26 @@ private fun CatList(
     LazyColumn(
         modifier = Modifier.fillMaxHeight()
     ) {
-        items(count = catLists.size + 1, itemContent = { itemIndex ->
-            if (itemIndex == 0) {
-                CatHeaderItem()
-            } else {
-                val listIndex = itemIndex - 1
-                val catEntity = catLists[listIndex]
-                CatListItem(
-                    catEntity = catEntity,
-                    onClickItem = {
-                        val detailRoute = Destinations.CatDetail.toString() + "/${catEntity.id}"
-                        navController.navigate(
-                            route = detailRoute
-                        )
-                    }
-                )
+        items(
+            count = catLists.size + 1,
+            itemContent = { itemIndex ->
+                if (itemIndex == 0) {
+                    CatHeaderItem()
+                } else {
+                    val listIndex = itemIndex - 1
+                    val catEntity = catLists[listIndex]
+                    CatListItem(
+                        catEntity = catEntity,
+                        onClickItem = {
+                            val detailRoute = Destinations.CatDetail.toString() + "/${catEntity.id}"
+                            navController.navigate(
+                                route = detailRoute
+                            )
+                        }
+                    )
+                }
             }
-        })
+        )
     }
 }
 

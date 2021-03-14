@@ -50,11 +50,14 @@ fun ScreenNavigator() {
     val navController = rememberNavController()
     NavHost(navController, startDestination = Destinations.CatList.getRoute()) {
         composable(
-            route = Destinations.CatList.getRoute()) { CatListScreen(navController) }
+            route = Destinations.CatList.getRoute()
+        ) { CatListScreen(navController) }
         composable(
             route = Destinations.CatDetail.getRoute(),
-            arguments = listOf(navArgument("Id") {
-                type = NavType.IntType }
+            arguments = listOf(
+                navArgument("Id") {
+                    type = NavType.IntType
+                }
             )
         ) { backStackEntry ->
             CatDetailScreen(

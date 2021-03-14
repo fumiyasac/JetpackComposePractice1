@@ -15,28 +15,28 @@
  */
 package com.example.androiddevchallenge.ui.components
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Surface
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import com.example.androiddevchallenge.factory.CatFactory
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.entity.CatEntity
+import com.example.androiddevchallenge.factory.CatFactory
 import com.example.androiddevchallenge.ui.theme.lightGreen700
 
 @Composable
 fun CatFundamentalInfo(
     catEntity: CatEntity
 ) {
-    Surface (
+    Surface(
         modifier = Modifier
             .fillMaxWidth()
     ) {
@@ -77,7 +77,7 @@ private fun CatNumber(
     number: Int
 ) {
     Text(
-        text = "No.${number}",
+        text = "No.$number",
         style = TextStyle(
             fontWeight = MaterialTheme.typography.body2.fontWeight,
             fontSize = MaterialTheme.typography.body2.fontSize
