@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">ペット養子縁組App</string>
-    <string name="statement_introduction">※猫ちゃんの自己紹介サンプル\nこんにちニャ！私は○○って言うんだ。高い所に登ったり段ボール箱の中に入ったりすることが好きなんだニャ。特に最近は暖かくなってきたので結構寝ている時間が長くなってしまうことが多いけど、遊ぶことと触れ合うことは大好きなので是非ともよろしくニャ！</string>
-    <string name="statement_testimonial">※猫ちゃんの推薦文紹介サンプル\n元気でかわいい猫ちゃんになります。本当にどの子も個性的かつ甘えん坊なのでよろしくお願いします！</string>
 </resources>

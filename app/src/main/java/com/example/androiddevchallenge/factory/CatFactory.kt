@@ -1,6 +1,8 @@
 package com.example.androiddevchallenge.factory
 
-import android.content.res.Resources
+import android.app.Application
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.res.TypedArrayUtils.getString
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.entity.CatEntity
 
@@ -142,7 +144,7 @@ object CatFactory {
             name = "レオンくん",
             birthday = "2020/12/08",
             gender = "男の子",
-            imageAsset = R.drawable.cat_image_13,
+            imageAsset = R.drawable.cat_image_15,
             introduction = createIntroduction(),
             testimonial = createTestimonial()
         ),
@@ -151,15 +153,15 @@ object CatFactory {
             name = "モカちゃん",
             birthday = "2020/12/08",
             gender = "女の子",
-            imageAsset = R.drawable.cat_image_14,
+            imageAsset = R.drawable.cat_image_16,
             introduction = createIntroduction(),
             testimonial = createTestimonial()
         ),
     )
 
     private fun createIntroduction(): String =
-        Resources.getSystem().getString(R.string.statement_introduction)
+        "※猫ちゃんの自己紹介サンプル\\nこんにちニャ！私は○○って言うんだ。高い所に登ったり段ボール箱の中に入ったりすることが好きなんだニャ。特に最近は暖かくなってきたので結構寝ている時間が長くなってしまうことが多いけど、遊ぶことと触れ合うことは大好きなので是非ともよろしくニャ！"
 
     private fun createTestimonial(): String =
-        Resources.getSystem().getString(R.string.statement_testimonial)
+        "※猫ちゃんの推薦文紹介サンプル\\n元気でかわいい猫ちゃんになります。本当にどの子も個性的かつ甘えん坊なのでよろしくお願いします！"
 }
