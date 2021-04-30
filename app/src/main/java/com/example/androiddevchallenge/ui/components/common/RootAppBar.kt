@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.components
+package com.example.androiddevchallenge.ui.components.common
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton

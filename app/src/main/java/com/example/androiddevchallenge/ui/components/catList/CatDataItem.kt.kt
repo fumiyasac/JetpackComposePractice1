@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.components
+package com.example.androiddevchallenge.ui.components.catList
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -49,7 +49,7 @@ import com.example.androiddevchallenge.factory.CatFactory
 import com.example.androiddevchallenge.ui.theme.lightGreen700
 
 @Composable
-fun CatListItem(
+fun CatDataItem(
     catEntity: CatEntity,
     onClickItem: () -> Unit
 ) {
@@ -175,10 +175,10 @@ private fun CatInformation(
     }
 }
 
-@Preview("CatListItem Component")
+@Preview("CatItem Component")
 @Composable
-fun CatListItemPreview() {
-    CatListItem(
+fun CatDataPreview() {
+    CatDataItem(
         catEntity = CatFactory.getCatById(id = 14),
         onClickItem = {}
     )

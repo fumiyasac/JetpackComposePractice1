@@ -28,12 +28,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.example.androiddevchallenge.factory.CatFactory
-import com.example.androiddevchallenge.ui.components.CatDetailTitle
-import com.example.androiddevchallenge.ui.components.CatFundamentalInfo
-import com.example.androiddevchallenge.ui.components.CatImageAndName
-import com.example.androiddevchallenge.ui.components.CatIntroduction
-import com.example.androiddevchallenge.ui.components.CatTestimonial
-import com.example.androiddevchallenge.ui.components.CommonAppBar
+import com.example.androiddevchallenge.ui.components.catDetail.CatDetailTitle
+import com.example.androiddevchallenge.ui.components.catDetail.CatFundamentalInfo
+import com.example.androiddevchallenge.ui.components.catDetail.CatImageAndName
+import com.example.androiddevchallenge.ui.components.catDetail.CatIntroduction
+import com.example.androiddevchallenge.ui.components.catDetail.CatTestimonial
+import com.example.androiddevchallenge.ui.components.common.CommonAppBar
 
 @Composable
 fun CatDetailScreen(
