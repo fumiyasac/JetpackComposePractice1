@@ -28,8 +28,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.entity.CatEntity
 import com.example.androiddevchallenge.factory.CatFactory
-import com.example.androiddevchallenge.ui.components.catList.CatHeaderItem
 import com.example.androiddevchallenge.ui.components.catList.CatDataItem
+import com.example.androiddevchallenge.ui.components.catList.CatHeaderItem
 import com.example.androiddevchallenge.ui.components.common.CommonAppBar
 import com.example.androiddevchallenge.ui.navigation.Destinations
 
@@ -88,8 +88,6 @@ private fun CatList(
         )
     }
 }
-
-
 
 @Preview("List Screen", widthDp = 360, heightDp = 640)
 @Composable
