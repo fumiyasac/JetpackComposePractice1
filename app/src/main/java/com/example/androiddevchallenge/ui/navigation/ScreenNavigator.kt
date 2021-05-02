@@ -16,53 +16,75 @@
 package com.example.androiddevchallenge.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.ui.screen.CatDetailScreen
 import com.example.androiddevchallenge.ui.screen.CatListScreen
+import com.example.androiddevchallenge.viewmodel.CatListViewModel
 
-enum class Destinations {
-    CatList {
-        override fun toString(): String {
-            return "CatList"
-        }
-        override fun getRoute(): String {
-            return "CatList"
-        }
-    },
-    CatDetail {
-        override fun toString(): String {
-            return "CatDetail"
-        }
-        override fun getRoute(): String {
-            return "CatDetail/{Id}"
-        }
-    };
+object Destinations {
+    const val CatListScreen = "CatListScreen"
+    const val CatDetailScreen = "CatDetailScreen"
+    object CatDetailArgs {
+        const val Id = "{Id}"
+    }
+}
 
-    abstract fun getRoute(): String
+class Actions(navController: NavController) {
+    val openCatDetail: (Int) -> Unit = { id ->
+        val route = listOf(
+            Destinations.CatDetailScreen,
+            id.toString()
+        ).joinToString(separator = "/")
+        navController.navigate(
+            route = route
+        )
+    }
+    val navigateBack: () -> Unit = {
+        navController.popBackStack()
+    }
 }
 
 @Composable
 fun ScreenNavigator() {
     val navController = rememberNavController()
-    NavHost(navController, startDestination = Destinations.CatList.getRoute()) {
+    val actions = Actions(
+        navController = navController
+    )
+    NavHost(
+        navController = navController,
+        startDestination = Destinations.CatListScreen
+    ) {
+        // 猫ちゃん一覧画面
         composable(
-            route = Destinations.CatList.getRoute()
-        ) { CatListScreen(navController) }
+            route = Destinations.CatListScreen
+        ) {
+            CatListScreen(
+                catListViewModel = CatListViewModel(),
+                openCatDetail = actions.openCatDetail
+            )
+        }
+        // 猫ちゃん詳細画面
         composable(
-            route = Destinations.CatDetail.getRoute(),
+            route = listOf(
+                Destinations.CatDetailScreen,
+                Destinations.CatDetailArgs.Id
+            ).joinToString(separator = "/"),
             arguments = listOf(
                 navArgument("Id") {
                     type = NavType.IntType
                 }
             )
         ) { backStackEntry ->
+            val id = requireNotNull(backStackEntry.arguments).getInt("Id")
             CatDetailScreen(
-                navController,
-                requireNotNull(backStackEntry.arguments).getInt("Id")
+                id = id,
+                navigateBack = actions.navigateBack
             )
         }
     }

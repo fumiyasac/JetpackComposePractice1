@@ -24,9 +24,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
 import com.example.androiddevchallenge.factory.CatFactory
 import com.example.androiddevchallenge.ui.components.catDetail.CatDetailTitle
 import com.example.androiddevchallenge.ui.components.catDetail.CatFundamentalInfo
@@ -37,15 +35,15 @@ import com.example.androiddevchallenge.ui.components.common.CommonAppBar
 
 @Composable
 fun CatDetailScreen(
-    navController: NavController,
-    id: Int
+    id: Int,
+    navigateBack: () -> Unit,
 ) {
     val catEntity = CatFactory.getCatById(id = id)
     Scaffold(
         topBar = {
             CommonAppBar(
                 title = "${catEntity.name}自己紹介",
-                navController = navController,
+                navigateBack = navigateBack,
                 shouldRoot = false
             )
         },
@@ -80,5 +78,8 @@ fun CatDetailScreen(
 @Preview("Detail Screen", widthDp = 360, heightDp = 640)
 @Composable
 fun CatDetailScreenPreview() {
-    CatDetailScreen(navController = NavController(LocalContext.current), id = 14)
+    CatDetailScreen(
+        id = 14,
+        navigateBack = {}
+    )
 }

@@ -20,7 +20,7 @@ import com.example.androiddevchallenge.entity.CatEntity
 
 object CatFactory {
 
-    fun getCatList(): List<CatEntity> = create()
+    fun getCatsList(): List<CatEntity> = create()
 
     fun getCatById(id: Int): CatEntity = create().first { id == it.id }
 

@@ -21,27 +21,26 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.entity.CatEntity
-import com.example.androiddevchallenge.factory.CatFactory
 import com.example.androiddevchallenge.ui.components.catList.CatDataItem
 import com.example.androiddevchallenge.ui.components.catList.CatHeaderItem
 import com.example.androiddevchallenge.ui.components.common.CommonAppBar
-import com.example.androiddevchallenge.ui.navigation.Destinations
+import com.example.androiddevchallenge.viewmodel.CatListViewModel
 
 @Composable
 fun CatListScreen(
-    navController: NavController
+    catListViewModel: CatListViewModel,
+    openCatDetail: (Int) -> Unit
 ) {
+    val catsList = catListViewModel.catsList.observeAsState(initial = listOf())
     Scaffold(
         topBar = {
             CommonAppBar(
                 title = "ペット養子縁組App",
-                navController = navController,
+                navigateBack = {},
                 shouldRoot = true
             )
         },
@@ -51,8 +50,8 @@ fun CatListScreen(
             modifier = Modifier.fillMaxHeight()
         ) {
             CatList(
-                catLists = CatFactory.getCatList(),
-                navController = navController
+                catLists = catsList.value,
+                openCatDetail = openCatDetail
             )
         }
     }
@@ -61,7 +60,7 @@ fun CatListScreen(
 @Composable
 private fun CatList(
     catLists: List<CatEntity>,
-    navController: NavController
+    openCatDetail: (Int) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxHeight()
@@ -77,10 +76,7 @@ private fun CatList(
                     CatDataItem(
                         catEntity = catEntity,
                         onClickItem = {
-                            val detailRoute = Destinations.CatDetail.toString() + "/${catEntity.id}"
-                            navController.navigate(
-                                route = detailRoute
-                            )
+                            openCatDetail(catEntity.id)
                         }
                     )
                 }
@@ -93,6 +89,7 @@ private fun CatList(
 @Composable
 fun CatListListScreenPreview() {
     CatListScreen(
-        navController = NavController(LocalContext.current),
+        catListViewModel = CatListViewModel(),
+        openCatDetail = {}
     )
 }

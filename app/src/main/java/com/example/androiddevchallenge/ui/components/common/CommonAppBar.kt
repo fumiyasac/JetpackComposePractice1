@@ -16,14 +16,12 @@
 package com.example.androiddevchallenge.ui.components.common
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
 
 @Composable
 fun CommonAppBar(
     title: String,
-    navController: NavController,
+    navigateBack: () -> Unit,
     shouldRoot: Boolean = false
 ) {
     if (shouldRoot) {
@@ -33,7 +31,7 @@ fun CommonAppBar(
     } else {
         DestinationAppBar(
             title = title,
-            navController = navController
+            navigateBack = navigateBack
         )
     }
 }
@@ -43,7 +41,7 @@ fun CommonAppBar(
 fun RootCommonAppBarPreview() {
     CommonAppBar(
         title = "ペット養子縁組App",
-        navController = NavController(LocalContext.current),
+        navigateBack = {},
         shouldRoot = true
     )
 }
@@ -53,7 +51,7 @@ fun RootCommonAppBarPreview() {
 fun DestinationCommonAppBarPreview() {
     CommonAppBar(
         title = "○○○ちゃんの自己紹介",
-        navController = NavController(LocalContext.current),
+        navigateBack = {},
         shouldRoot = false
     )
 }

@@ -24,14 +24,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
 
 @Composable
 fun DestinationAppBar(
     title: String,
-    navController: NavController
+    navigateBack: () -> Unit
 ) {
     TopAppBar(
         title = {
@@ -39,7 +37,7 @@ fun DestinationAppBar(
         },
         navigationIcon = {
             IconButton(
-                onClick = { navController.popBackStack() }
+                onClick = { navigateBack() }
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
@@ -57,6 +55,6 @@ fun DestinationAppBar(
 fun DestinationAppBarPreview() {
     DestinationAppBar(
         title = "○○○ちゃんの自己紹介",
-        navController = NavController(LocalContext.current)
+        navigateBack = {}
     )
 }
